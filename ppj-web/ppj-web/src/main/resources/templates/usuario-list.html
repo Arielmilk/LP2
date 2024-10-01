@@ -1,0 +1,33 @@
+<!-- src/main/resources/templates/usuario-list.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lista de Usuários</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}" />
+</head>
+<body>
+    <h1>Usuários</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Idade</th>
+                <th>Peso</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="usuario : ${usuarios}">
+                <td th:text="${usuario.nome}"></td>
+                <td th:text="${usuario.idade}"></td>
+                <td th:text="${usuario.peso}"></td>
+                <td>
+                    <a th:href="@{/usuarios/editar/{id}(id=${usuario.id})}">Editar</a> | 
+                    <a th:href="@{/usuarios/excluir/{id}(id=${usuario.id})}" onclick="return confirm('Tem certeza que deseja excluir?');">Excluir</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <a th:href="@{/usuarios/novo}">Adicionar Novo Usuário</a>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!-- src/main/resources/templates/usuario-form.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Formulário de Usuário</title>
+    <link rel="stylesheet" th:href="@{../css/styles.css}" />
+</head>
+<body>
+    <h1>Formulário de Usuário</h1>
+    <form th:action="@{/usuarios}" th:object="${usuario}" method="post">
+        <input type="hidden" th:field="*{id}" />
+        <div>
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" th:field="*{nome}" required />
+        </div>
+        <div>
+            <label for="idade">Idade:</label>
+            <input type="number" id="idade" th:field="*{idade}" required />
+        </div>
+        <div>
+            <label for="peso">Peso:</label>
+            <input type="number" step="0.1" id="peso" th:field="*{peso}" required />
+        </div>
+        <div>
+            <button type="submit">Salvar</button>
+        </div>
+    </form>
+    <a th:href="@{/usuarios}">Voltar</a>
+</body>
+</html>
