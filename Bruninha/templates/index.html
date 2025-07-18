@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Para Minha Duprinha ❤️</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<div id="hearts-container"></div>
+
+<script>
+    function createHeart() {
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = (2 + Math.random() * 3) + "s";
+        document.getElementById("hearts-container").appendChild(heart);
+
+        setTimeout(() => heart.remove(), 5000);
+    }
+
+    setInterval(createHeart, 300);
+</script>
+
+<body>
+    <audio autoplay loop>
+        <source src="{{ url_for('static', filename='musica.mp3') }}" type="audio/mpeg">
+        Seu navegador não suporta áudio
+    </audio>
+
+    <div class="container">
+        <h1>Te amo, meu amor! 💖</h1>
+        <img src="{{ url_for('static', filename='fotinha.jpg') }}" alt="Foto da minha namorada">
+        <p>Você é minha inspiração todos os dias ✨</p>
+    </div>
+</body>
+</html>
